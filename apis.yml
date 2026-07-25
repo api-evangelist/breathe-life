@@ -1,0 +1,91 @@
+aid: breathe-life
+url: https://raw.githubusercontent.com/api-evangelist/breathe-life/refs/heads/main/apis.yml
+name: Breathe Life
+kind: company
+description: >-
+  Breathe Life is a Montreal, Quebec based life insurance technology company —
+  an enterprise SaaS core-systems vendor rather than a carrier or a broker —
+  founded in 2018 to sell life insurers a modern new-business origination and
+  distribution platform. Its product was the Breathe Life Hybrid Origination
+  (Hybrid Distribution) Platform, sold either end-to-end or as four separately
+  licensable modules: Quoter, Hybrid e-App, Advisor Tools and Data Dashboards,
+  supporting advisor-driven, consumer self-serve, or blended selling of
+  individual life products with simple and complex underwriting paths. Its home
+  market is Canada, and its named clients were Canadian and North American life
+  carriers, fraternals and faith-based insurers including Teachers Life,
+  FaithLife Financial, National Bank Insurance, National Catholic Society of
+  Foresters and La Capitale. The company raised CAD $11.5M in August 2020 from
+  Diagram Ventures, Real Ventures and Investissement Quebec plus angels from
+  AXA, AIG and RGA, was named to the 2020 InsurTech 100, and held PCI DSS, SOC 2
+  Type II and SOC 3 attestations. SE2, an Eldridge business, announced its
+  acquisition of Breathe Life on 2022-03-28; SE2 subsequently rebranded as
+  Zinnia, and the Breathe Life site carried a "We are now part of Zinnia!"
+  banner before being decommissioned. Its API posture is closed and now
+  historical: as of the 2026-07-25 review Breathe Life never published a
+  developer portal, API reference, OpenAPI or Swagger definition, Postman
+  collection, GraphQL endpoint, webhook catalog or ACORD/AL3 conformance claim
+  on breathelife.com, and the domain no longer serves a site at all —
+  breathelife.com returns an nginx "Site Not Configured" 404 and
+  www.breathelife.com returns a WP Engine "Site is not available" 404. Quote,
+  bind, issue and FNOL existed only as capabilities inside a carrier-licensed,
+  login-gated SaaS product, never as an addressable public API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- Canada
+- Life Insurance
+- Insurtech
+- Core Systems
+- Policy Origination
+- Quoting
+- Underwriting
+- Agent Tools
+- SaaS
+- Acquired
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.breathelife.com/
+  name: Breathe Life Website
+  description: >-
+    Primary domain. Decommissioned as of the 2026-07-25 review — returns a WP Engine
+    "Site is not available" 404 page; the apex breathelife.com returns an nginx
+    "Site Not Configured" 404.
+- type: LinkedIn
+  url: https://www.linkedin.com/company/breathe-life/
+- type: Facebook
+  url: https://www.facebook.com/breathelifeinsurance/
+- type: GitHubOrganization
+  url: https://github.com/getbreathelife
+  name: getbreathelife
+  description: >-
+    18 public repositories, all internal engineering tooling and forks (ESLint and
+    Prettier configs, Cloud Build GitHub App, TestCafe reporters, a OneSpan Sign
+    Node client and Terraform provider). No product API artifact, SDK, OpenAPI or
+    Swagger definition is published in the organization.
+- type: PressRelease
+  url: https://web.archive.org/web/20220519024512/https://www.breathelife.com/se2-acquires-breathe-life-to-scale-saas-product-and-data-capabilities-for-carriers-across-the-insurance-lifecycle/
+  name: SE2 Acquires Breathe Life (2022-03-28)
+  description: >-
+    Archived acquisition announcement. SE2, an Eldridge business, acquired Breathe
+    Life; Breathe Life CEO Ian Jeffrey took over new business and customer
+    engagement SaaS products at SE2.
+- type: Archive
+  url: https://web.archive.org/web/20221005001219/https://www.breathelife.com/
+  name: Wayback Machine snapshot (2022-10-05)
+  description: >-
+    Last substantive capture of the live site, carrying the "We are now part of
+    Zinnia!" banner and the Hybrid Origination Platform product pages.
+- type: ParentCompany
+  url: https://zinnia.com/
+  name: Zinnia (formerly SE2)
+  description: >-
+    Acquirer. The Breathe Life origination platform is marketed by Zinnia as its
+    Hybrid Origination solution. Zinnia — not Breathe Life — operates the only
+    live developer portal associated with the asset, at https://developers.zinnia.com/.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,402 @@
+aid: breathe-life
+name: Breathe Life
+review:
+  question: Does Breathe Life publish a public, self-serve API surface for quote,
+    bind, issue, or FNOL?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Canada
+  tier: core-systems
+findings:
+  summary: |
+    Breathe Life (Montreal, Quebec) publishes NO public API surface of any kind, and
+    as of the 2026-07-25 review its primary domain no longer serves a website at all.
+    The apex breathelife.com answers on nginx with an HTTP 404 "Site Not Configured"
+    page at every probed path — including /developers, /api, /docs, /openapi.json,
+    /swagger.json, /graphql and every .well-known probe — and its TLS certificate does
+    not match the hostname. www.breathelife.com is a CNAME to breathelife21.wpengine.com
+    and returns a WP Engine "Site is not available" HTTP 404 served from Google Cloud
+    Storage with a Last-Modified of 2022-04-18. No developer, developers, docs, api,
+    apidocs, portal, partners, sandbox, app, secure or my subdomain resolves.
+
+    Breathe Life was a CORE-SYSTEMS vendor, not a carrier or a broker: an enterprise
+    SaaS platform sold to life insurers. Founded 2018 in Montreal, it sold the Breathe
+    Life Hybrid Origination (Hybrid Distribution) Platform end-to-end or as four
+    licensable modules — Quoter, Hybrid e-App, Advisor Tools, Data Dashboards —
+    supporting advisor-driven, consumer self-serve, or blended sales of individual life
+    products with simple and complex underwriting paths. Named clients: Teachers Life,
+    FaithLife Financial, National Bank Insurance, National Catholic Society of
+    Foresters, La Capitale. It raised CAD $11.5M in August 2020 (Diagram Ventures, Real
+    Ventures, Investissement Quebec, plus angels from AXA, AIG and RGA), was named to
+    the 2020 InsurTech 100, and published PCI DSS service-provider, SOC 2 Type II and
+    SOC 3 attestations (AoC and SOC 2 report available only by emailing
+    pci@breathelife.com and soc2@breathelife.com — request-gated, not self-serve).
+
+    SE2, an Eldridge business headquartered in Topeka, Kansas, announced the acquisition
+    of Breathe Life on 2022-03-28; Breathe Life CEO Ian Jeffrey took over new business
+    and customer engagement SaaS products at SE2. SE2 subsequently rebranded as Zinnia,
+    and the last substantive capture of the site (2022-10-05) carries a "We are now part
+    of Zinnia!" banner. The platform survives inside Zinnia's product line as its
+    "Hybrid Origination" solution. Zinnia — a different legal entity, not profiled here —
+    does operate a live Kong-hosted developer portal at https://developers.zinnia.com/
+    (HTTP 200, listing Case Management, Documents, Illustration, MarketConnect Order
+    Entry, New Business, New Business Annuity, Policy and Policy Transactions APIs).
+    That portal is Zinnia's, not Breathe Life's, and none of its listed APIs is branded
+    or documented as a Breathe Life API.
+
+    This is the expected and correct outcome for a Canadian insurance core-systems
+    vendor. Canada has the most fragmented insurance supervision of the four markets
+    studied — OSFI prudential, provinces (FSRA, AMF) on market conduct — there is no
+    open-insurance mandate, and Consumer-Driven Banking excludes insurance entirely.
+    Nothing obliged Breathe Life to publish an API, and its buyers were carriers signing
+    enterprise SaaS contracts, not developers signing up self-serve.
+  developerPortal:
+    exists: false
+    url: ''
+    classification: none
+    note: |
+      No developer portal was found in any form — not a self-serve portal, not a
+      partner/agent login wall, not a marketing "innovation" page. The Wayback Machine
+      index of breathelife.com (1,164 archived URLs, 2018-2023) contains no /developers,
+      /developer, /api, /docs, /swagger, /openapi, /sdk or /integrations path. The only
+      matches for a developer-shaped string across the entire archived site are two
+      WordPress blog tag pages, /tag/developer/ and /tag/software-developer/.
+  probes:
+  - url: https://breathelife.com/
+    status: 0
+    note: |
+      TLS handshake fails — the certificate presented has no subjectAltName matching
+      breathelife.com (curl error 60). Probed again over plain HTTP below.
+  - url: http://breathelife.com/
+    status: 404
+    note: 'server: nginx. Body is a "Site Not Configured | 404 Not Found" page.'
+  - url: http://breathelife.com/developers
+    status: 404
+  - url: http://breathelife.com/developer
+    status: 404
+  - url: http://breathelife.com/api
+    status: 404
+  - url: http://breathelife.com/docs
+    status: 404
+  - url: http://breathelife.com/partners
+    status: 404
+  - url: http://breathelife.com/integrations
+    status: 404
+  - url: http://breathelife.com/robots.txt
+    status: 404
+  - url: http://breathelife.com/sitemap.xml
+    status: 404
+  - url: http://breathelife.com/sitemap_index.xml
+    status: 404
+  - url: http://breathelife.com/llms.txt
+    status: 404
+  - url: http://breathelife.com/openapi.json
+    status: 404
+  - url: http://breathelife.com/openapi.yaml
+    status: 404
+  - url: http://breathelife.com/swagger.json
+    status: 404
+  - url: http://breathelife.com/api-docs
+    status: 404
+  - url: http://breathelife.com/spec
+    status: 404
+  - url: http://breathelife.com/redoc
+    status: 404
+  - url: http://breathelife.com/graphql
+    status: 404
+  - url: http://breathelife.com/wp-json/
+    status: 404
+  - url: http://breathelife.com/.well-known/openid-configuration
+    status: 404
+  - url: http://breathelife.com/.well-known/oauth-authorization-server
+    status: 404
+  - url: http://breathelife.com/.well-known/security.txt
+    status: 404
+  - url: https://www.breathelife.com/
+    status: 404
+    note: |
+      CNAME to breathelife21.wpengine.com. Serves a WP Engine "Site is not available"
+      HTML page from Google Cloud Storage (x-goog-* headers, Last-Modified
+      2022-04-18). The hosting account has been deactivated.
+  - url: https://www.breathelife.com/developers
+    status: 404
+  - url: https://www.breathelife.com/api
+    status: 404
+  - url: https://www.breathelife.com/wp-json/
+    status: 404
+  - url: https://www.breathelife.com/robots.txt
+    status: 404
+  - url: https://breathelife21.wpengine.com/
+    status: 404
+    note: Same WP Engine deactivated-site page as www.breathelife.com.
+  - url: https://developer.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://developers.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://docs.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://api.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://apidocs.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://portal.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://partners.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://sandbox.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://app.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://secure.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://my.breathelife.com
+    status: 0
+    note: DNS does not resolve.
+  - url: https://status.breathelife.com/
+    status: 302
+    note: |
+      The only breathelife.com subdomain that still resolves — a dangling CNAME to
+      4nzprsv2nmt8.stspg-customer.com (Atlassian Statuspage). Statuspage answers with
+      HTTP 302 to https://www.statuspage.io (server: AtlassianEdge,
+      x-statuspage-version header), which redirects on to the Atlassian marketing site.
+      The status page itself has been deleted; /api/v2/summary.json and
+      /api/v2/components.json return the same redirect chain, not JSON.
+  - url: https://api.github.com/orgs/getbreathelife
+    status: 200
+    note: |
+      Public GitHub organization "Breathe Life", location Montreal, Canada, blog
+      https://www.breathelife.com, created 2018-01-08, 18 public repositories.
+  - url: https://registry.npmjs.org/-/v1/search?text=breathelife
+    status: 200
+    note: |
+      6 packages: @breathelife/prettier-plugin-sort-imports, eslint-config-breathelife-base,
+      eslint-config-breathelife-web, eslint-config-breathelife-node, @breathelife/cls-hooked,
+      @breathelife-oss/cls-hooked. All internal engineering tooling. No product SDK.
+  - url: http://web.archive.org/cdx/search/cdx?url=breathelife.com*
+    status: 200
+    note: |
+      1,164 unique archived URLs, 2018-2023. Grepped case-insensitively for develop,
+      /api, swagger, openapi, integrat, docs, acord, partner and sdk. Only three hits:
+      /tag/developer/, /tag/software-developer/ and a blog post about a La Capitale
+      partnership. Confirms the absence is site-wide and historical, not just a
+      guessed-hostname miss.
+  - url: https://developers.zinnia.com/
+    status: 200
+    note: |
+      CONTEXT ONLY — this is the ACQUIRER's portal, not Breathe Life's. Kong-hosted
+      (CNAME 80aa38714af8.us.kongportals.com). Lists Case Management 1.0.0, Documents
+      0.4.5, Illustration 3.5.3, Illustration-Client-Cases v1, MarketConnect-OrderEntry
+      1.0.1, New-Business 0.9.8, New Business - Annuity 0.6.0, Policy 0.0.21 and Policy
+      Transactions 1.0.7. No API on it is branded or documented as Breathe Life.
+  specs:
+    openapiFound: false
+    count: 0
+    note: |
+      No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, .proto or Postman artifact exists to
+      harvest. GitHub code search across org:getbreathelife returned 0 results for both
+      "openapi" and "swagger". The openapi/ directory is intentionally omitted from
+      this repo.
+  acord:
+    posture: no ACORD reference found
+    searchedFor:
+    - ACORD
+    - AL3
+    - ACORD XML
+    - ACORD certified
+    - NGDS
+    - IVANS
+    - agency download
+    - Applied Epic
+    - Vertafore AMS360
+    note: |
+      No occurrence of ACORD, AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore
+      appears in the archived Wayback URL index for breathelife.com, in the full text of
+      the archived About Us, Hybrid Distribution Platform, Security, Client Success,
+      Direct Experience, Distribution or Press pages, in the getbreathelife GitHub
+      organization, or in any published npm package. Breathe Life sold a front-end
+      origination platform directly to carriers; it was not an agency-management-system
+      participant and did not ride the ACORD/IVANS download rail that carries US and
+      Canadian broker data. Absence here is a real finding, not a gap in the search.
+  insuranceVerbs:
+    quote:
+      exposed: false
+      channel: |
+        Real product capability — the "Quoter" module — but delivered inside the
+        carrier-licensed, login-gated SaaS application. Advisor-facing and
+        consumer-facing depending on the carrier's configuration. No API.
+    bind:
+      exposed: false
+      channel: |
+        Delivered through the "Hybrid e-App" module (electronic application capture with
+        underwriting rules, simple and complex paths). Advisor-facing or consumer
+        self-serve. No API.
+    issue:
+      exposed: false
+      channel: |
+        Policy delivery was a stated platform outcome ("increases the speed of policy
+        delivery"), executed inside the platform and the carrier's own back office. No API.
+    fnol:
+      exposed: false
+      channel: |
+        Not in scope for Breathe Life at all. The platform covered new-business
+        origination and distribution only — needs analysis through application — not
+        claims. No FNOL surface of any kind.
+    note: |
+      All four verbs are absent as addressable APIs. Three of them (quote, bind, issue)
+      existed as product capability behind an enterprise login; FNOL was never part of
+      the product.
+  auth:
+    model: none published
+    note: |
+      No API key program, no OAuth2 client-credentials or authorization-code flow, no
+      mTLS partner onboarding and no SAML partner SSO is documented anywhere. Neither
+      /.well-known/openid-configuration nor /.well-known/oauth-authorization-server is
+      served on the apex or www. Platform authentication was carrier-tenant login inside
+      the SaaS application and was never documented publicly.
+  webhooks:
+    exists: false
+    note: No event catalog, no AsyncAPI, no webhook documentation, ever published.
+  postman:
+    exists: false
+    note: No public Postman collection or workspace found.
+  graphql:
+    exists: false
+    note: http://breathelife.com/graphql returns 404; no host resolves to introspect.
+  grpc:
+    exists: false
+    note: No .proto file published in the getbreathelife GitHub organization.
+  openSource:
+    githubOrg: https://github.com/getbreathelife
+    publicRepos: 18
+    note: |
+      All 18 public repositories are internal engineering tooling or forks: ESLint and
+      Prettier configs, a Cloud Build GitHub App (cloud-build-on-prs, 11 stars), TestCafe
+      reporters for Slack and Sentry, forks of rheostat, react-sticky, pdffiller,
+      cls-hooked, kamus and nidhogg, and a fork of globalpayments/node-sdk (which is
+      Global Payments' SDK, not a Breathe Life one). The only first-party API-adjacent
+      work is onespan-sign-node — a Node.js CLIENT library for the third-party OneSpan
+      Sign e-signature API (v11.46) — and terraform-provider-onespansign. Both consume
+      someone else's API; neither exposes one.
+  compliance:
+    attestations:
+    - PCI DSS compliant service provider (AoC by request to pci@breathelife.com)
+    - SOC 2 Type II (report by request to soc2@breathelife.com)
+    - SOC 3 (report published)
+    note: |
+      Sourced from the archived /life-insurance-security/ page (2022-10-04 snapshot).
+      Request-gated by email, not self-serve; no trust center portal.
+  transports:
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: |
+      No documented REST API. No api. hostname has ever resolved for breathelife.com in
+      any probe performed on 2026-07-25.
+  - protocol: GraphQL
+    documented: false
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+  - protocol: gRPC
+    documented: false
+  - protocol: ACORD/EDI
+    documented: false
+    note: No ACORD AL3, ACORD XML, NGDS or IVANS transport is referenced anywhere.
+  corporateStatus:
+    acquired: true
+    acquirer: SE2 (an Eldridge business), subsequently rebranded Zinnia
+    announced: '2022-03-28'
+    note: |
+      Announced from Topeka, KS and Montreal, QC via Business Wire on 2022-03-28. The
+      Breathe Life site later carried a "We are now part of Zinnia!" banner. The domain
+      has since been decommissioned entirely. Breathe Life is therefore a historical
+      record in this catalog: a real Canadian insurance core-systems vendor whose
+      product persists inside Zinnia's Hybrid Origination line.
+  regulatoryContext: |
+    Canada has the most fragmented insurance supervision of the four markets studied:
+    OSFI supervises federally-regulated insurers prudentially while the provinces own
+    market conduct — FSRA in Ontario, AMF in Quebec. Breathe Life was a technology
+    vendor, not a licensed insurer or intermediary, so it sat outside both regimes
+    directly and inherited its obligations through its carrier clients' contracts (which
+    is why PCI DSS, SOC 2 Type II and SOC 3 were the attestations it published). There
+    is no open-insurance mandate in Canada, and Consumer-Driven Banking — the country's
+    open-banking framework — excludes insurance entirely, so no forcing function ever
+    required Breathe Life or its carrier clients to expose quote, bind, issue or FNOL
+    as a public API.
+sources:
+- url: https://web.archive.org/web/20221005001219/https://www.breathelife.com/
+  type: Archive
+  note: |
+    Last substantive homepage capture (2022-10-05). Carries the "We are now part of
+    Zinnia!" banner, the "We power. You insure." positioning, the Hybrid Origination
+    Platform pitch, and the four-module navigation (Quoter, Hybrid e-App, Advisor Tools,
+    Data Dashboards). Client quotes from Peter D. Thompson (President, National Bank
+    Insurance) and Glenn Hymers (President & CEO, FaithLife Financial).
+- url: https://web.archive.org/web/20220519024512/https://www.breathelife.com/se2-acquires-breathe-life-to-scale-saas-product-and-data-capabilities-for-carriers-across-the-insurance-lifecycle/
+  type: PressRelease
+  note: |
+    "TOPEKA, KS, and MONTREAL, QC [March 28, 2022] (Business Wire) - SE2, an Eldridge
+    business and leading life and annuity insurance technology and services company,
+    today announced the strategic acquisition of Breathe Life, a new business hybrid
+    distribution and digital engagement platform provider for the life insurance
+    industry." Also states Breathe Life launched in 2018, names CEO Ian Jeffrey, and
+    lists investors Diagram Ventures, Real Ventures, Invest Quebec and angels from AXA,
+    AIG and RGA.
+- url: https://web.archive.org/web/20210226043449/https://www.breathelife.com/about-us/
+  type: About
+  note: |
+    "Breathe Life is helping the life insurance industry transform with a modern
+    distribution platform for carriers, as well as fraternal and faith-based
+    organizations." Notes 2020 InsurTech 100 recognition.
+- url: https://web.archive.org/web/20220809130852/https://www.breathelife.com/life-insurance-hybrid-distribution/
+  type: Documentation
+  note: |
+    Hybrid Origination Platform page. Describes the modular model (Quoter, Advisor Tools,
+    Hybrid E-App, Data Dashboards), multi-product and multi-insured support, simple and
+    complex underwriting capabilities, and carries the Teachers Life client quote. Zero
+    mention of an API, an integration catalog, or ACORD.
+- url: https://web.archive.org/web/20221004232457/https://www.breathelife.com/life-insurance-security/
+  type: Security
+  note: |
+    PCI DSS service-provider compliance, SOC 2 Type II and SOC 3. AoC and SOC 2 report
+    available only by emailing pci@breathelife.com / soc2@breathelife.com.
+- url: https://web.archive.org/web/20220809141908/https://www.breathelife.com/press/
+  type: Press
+  note: |
+    Press index carrying the "Breathe Life has been acquired by SE2" banner and the
+    funding trail — CAD $11.5M announced 2020-08-26 — plus carrier wins (Teachers Life
+    2021-03-16, National Catholic Society of Foresters 2021-06, an unnamed North American
+    carrier 2020-10-20).
+- url: https://github.com/getbreathelife
+  type: GitHubOrganization
+  note: |
+    18 public repositories, all internal tooling or forks. Used to confirm no product
+    SDK, OpenAPI, Swagger or .proto was ever open-sourced.
+- url: https://developers.zinnia.com/
+  type: Documentation
+  note: |
+    ACQUIRER context only. Zinnia's live Kong-hosted developer portal, which is where the
+    Breathe Life origination capability now lives commercially (Zinnia markets it as
+    "Hybrid Origination"). No listed API carries the Breathe Life name.
+actions:
+  openapiHarvested: false
+  openapiDirectoryOmitted: true
+  apisEmpty: true
+  reason: |
+    apis[] is intentionally empty. Breathe Life never published a documented public API,
+    and its domain no longer serves a site, so listing one would be fabrication. This
+    record's value is the accurate negative: a Canadian life-insurance core-systems
+    vendor whose entire quote / e-app / advisor-tools surface was enterprise SaaS behind
+    a carrier login, with no ACORD footprint, no developer portal, no spec, and no
+    open-banking or open-insurance mandate anywhere in its home market to force one.
