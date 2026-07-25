@@ -1,0 +1,87 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://web.archive.org/web/20220519024512/https://www.breathelife.com/se2-acquires-breathe-life-to-scale-saas-product-and-data-capabilities-for-carriers-across-the-insurance-lifecycle/
+  (acquisition announcement), https://web.archive.org/web/20221005001219/https://www.breathelife.com/
+  (last substantive capture), plus live host probes on 2026-07-25
+summary: >-
+  This is a terminal lifecycle record, not an API versioning policy. Breathe Life
+  never published an API, so there is no version scheme, no deprecation policy,
+  no sunset-header support and no SLA to capture. What there IS is a documented
+  end-of-life for the company's public surface: acquired by SE2 (an Eldridge
+  business) on 2022-03-28, rebranded under Zinnia, site banner changed to "We are
+  now part of Zinnia!", and the entire breathelife.com web presence
+  decommissioned — the apex now returns an nginx "Site Not Configured" 404 and
+  www returns a WP Engine "Site is not available" 404 whose payload was last
+  modified 2022-04-18. The product capability survives commercially inside
+  Zinnia's "Hybrid Origination" line, which is a different legal entity and is
+  not profiled here.
+versioning:
+  scheme: none
+  current: null
+  docs: null
+  note: No public API, therefore no version scheme.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No deprecation policy was ever published. The relevant deprecation is the
+    company's own: the public surface was retired wholesale rather than versioned
+    down.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  historical_url: https://status.breathelife.com/
+  live: false
+  probe:
+    status: 302
+    redirect_url: https://www.statuspage.io/
+    note: >-
+      status.breathelife.com is the only breathelife.com subdomain that still
+      resolves — a dangling CNAME to 4nzprsv2nmt8.stspg-customer.com (Atlassian
+      Statuspage). The status page itself has been deleted; Statuspage answers
+      with a 302 to its own marketing site, and /api/v2/summary.json returns the
+      same redirect chain rather than JSON. No StatusPage pointer is wired in
+      apis.yml because there is no operating status page.
+end_of_life:
+  status: acquired-and-decommissioned
+  acquired_by: SE2 (an Eldridge business), subsequently rebranded Zinnia
+  announced: '2022-03-28'
+  announcement: >-
+    https://web.archive.org/web/20220519024512/https://www.breathelife.com/se2-acquires-breathe-life-to-scale-saas-product-and-data-capabilities-for-carriers-across-the-insurance-lifecycle/
+  last_substantive_capture: '2022-10-05'
+  successor_product: Zinnia Hybrid Origination
+  successor_developer_portal: https://developers.zinnia.com/
+  successor_note: >-
+    Zinnia's Kong-hosted portal is live and lists Case Management, Documents,
+    Illustration, MarketConnect Order Entry, New Business, New Business Annuity,
+    Policy and Policy Transactions APIs. None of them is branded or documented as
+    a Breathe Life API; the portal belongs to the acquirer, not to this record.
+timeline:
+- date: '2018-01-08'
+  event: getbreathelife GitHub organization created (Montreal, Canada).
+- date: '2018'
+  event: Company founded in Montreal, Quebec.
+- date: '2020-08-26'
+  event: >-
+    CAD $11.5M raise announced (Diagram Ventures, Real Ventures, Investissement
+    Quebec, plus angels from AXA, AIG and RGA).
+- date: '2020'
+  event: Named to the InsurTech 100.
+- date: '2022-03-28'
+  event: SE2 announces acquisition of Breathe Life (Business Wire, Topeka KS / Montreal QC).
+- date: '2022-04-18'
+  event: Last-Modified date on the WP Engine placeholder now served at www.breathelife.com.
+- date: '2022-08-16'
+  event: Final npm publish from the breathelife npm account (@breathelife/cls-hooked 4.3.0).
+- date: '2022-10-05'
+  event: Last substantive Wayback capture of the live site, carrying the "We are now part of Zinnia!" banner.
+- date: '2022-10-28'
+  event: Final release of the getbreathelife/onespansign Terraform provider (0.1.1-beta).
+- date: '2026-07-25'
+  event: >-
+    Reviewed. breathelife.com apex returns nginx 404, www returns WP Engine 404,
+    no developer/api/docs subdomain resolves, status page deleted.
+deprecated_operations: []

@@ -1,0 +1,69 @@
+generated: '2026-07-25'
+method: searched
+source: live HTTP probes, 2026-07-25
+summary: >-
+  Breathe Life serves no /.well-known/ discovery surface. Both hosts that still
+  answer HTTP for breathelife.com are decommissioned placeholders — the apex on
+  nginx ("Site Not Configured") and www on WP Engine ("Site is not available") —
+  and both return HTTP 404 for every well-known path probed. No API host
+  (api./developers./docs./auth./identity./gateway.breathelife.com) resolves in
+  DNS, so there is no other origin to probe. Every document below is recorded as
+  a verified absence; no raw file was saved because nothing returned 200. No
+  WellKnown or SecurityTxt pointer is wired in apis.yml, because there is no
+  discovery document to point at.
+hosts:
+- host: http://breathelife.com
+  reachable: true
+  note: nginx, HTTP 404 "Site Not Configured" at every path. HTTPS fails TLS hostname verification.
+- host: https://www.breathelife.com
+  reachable: true
+  note: >-
+    CNAME to breathelife21.wpengine.com. HTTP 404 WP Engine "Site is not
+    available". TLS certificate does not match the hostname (verified with and
+    without certificate verification).
+- host: https://api.breathelife.com
+  reachable: false
+  note: DNS does not resolve.
+documents:
+- path: /.well-known/security.txt
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/security.txt
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/openid-configuration
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/openid-configuration
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: https://www.breathelife.com
+  status: 404
+- path: /.well-known/dnt-policy.txt
+  host: http://breathelife.com
+  status: 404
+- path: /.well-known/dnt-policy.txt
+  host: https://www.breathelife.com
+  status: 404

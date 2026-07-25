@@ -1,0 +1,83 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://web.archive.org/web/20221004232457/https://www.breathelife.com/life-insurance-security/
+  (HTTP 200, archived Security & Privacy page, last substantive capture)
+summary: >-
+  Breathe Life published a real, named compliance posture — PCI DSS service
+  provider, SOC 2 Type II and SOC 3 — but it published no API, so every
+  API-level and API-standard conformance assertion below is false by absence,
+  not by failure. The compliance attestations were request-gated by email
+  (pci@breathelife.com, soc2@breathelife.com) rather than served from a trust
+  center; only the SOC 3 report was linked for direct viewing. The company was
+  acquired by SE2 (now Zinnia) on 2022-03-28 and its domain has since been
+  decommissioned, so these attestations are HISTORICAL and cannot be re-verified
+  against a live page — the archived capture is the only surviving evidence.
+compliance_program:
+  published: true
+  self_serve: false
+  historical: true
+  page: https://web.archive.org/web/20221004232457/https://www.breathelife.com/life-insurance-security/
+  request_gated_contacts:
+  - pci@breathelife.com
+  - soc2@breathelife.com
+standards:
+- id: pci-dss
+  conforms: true
+  evidence: >-
+    "Breathe Life is a PCI DSS compliant service provider" — archived Security
+    page. Attestation of Compliance (AoC) available only by email request.
+  historical: true
+- id: soc2-type-ii
+  conforms: true
+  evidence: >-
+    "Having successfully completed a SOC2 Type II audit" — archived Security
+    page. Report available only by email request.
+  historical: true
+- id: soc3
+  conforms: true
+  evidence: >-
+    "Having successfully completed a SOC3 audit ... View our SOC 3 report here"
+    — archived Security page. The linked report URL did not survive in the
+    Wayback capture.
+  historical: true
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No oauth2 security scheme exists (no OpenAPI ever published);
+    /.well-known/oauth-authorization-server returns 404 on both live hosts.
+- id: openid-connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on both live hosts.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No API, no error contract, no application/problem+json surface.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on both live hosts.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No API to deprecate; no versioning or sunset policy ever published.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger definition was ever published on breathelife.com, in
+    the getbreathelife GitHub organization (code search returned 0 results), or
+    in any npm package.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface was ever documented.
+- id: acord
+  conforms: false
+  evidence: >-
+    No occurrence of ACORD, AL3, ACORD XML, NGDS, IVANS, Applied Epic or
+    Vertafore appears in the 1,164-URL Wayback index for breathelife.com, in the
+    archived product/security/about pages, in the GitHub organization, or in any
+    published package. Breathe Life sold a front-end origination platform
+    directly to carriers and was not an agency-management-system participant.
+- id: fhir
+  conforms: false
+  evidence: Not applicable — life insurance origination, not health data exchange.
+- id: scim
+  conforms: false
+  evidence: No identity provisioning surface documented.

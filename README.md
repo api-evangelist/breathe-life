@@ -40,6 +40,19 @@ Quote, bind, issue and FNOL all existed as real product capability inside the Hy
 
 **ACORD posture: no ACORD reference found.** No occurrence of ACORD, AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore appears on any archived Breathe Life page, in the GitHub organization, or in any published npm package.
 
+## Artifacts
+
+Enrichment round 2026-07-25. With no API to ground spec-derived artifacts in, the only artifacts that can honestly exist here are registry, probe and lifecycle records:
+
+- [`packages/breathe-life-packages.yml`](packages/breathe-life-packages.yml) — six first-party npm packages (`@breathelife/prettier-plugin-sort-imports`, three `eslint-config-breathelife-*`, two `cls-hooked` forks) plus the `getbreathelife/onespansign` Terraform provider (0.1.1-beta, 3,863 downloads). All internal tooling or third-party API clients; no product SDK, so no `SDKs` pointer is claimed.
+- [`well-known/breathe-life-well-known.yml`](well-known/breathe-life-well-known.yml) — every `/.well-known/` path probed on both surviving hosts returned HTTP 404.
+- [`conformance/breathe-life-conformance.yml`](conformance/breathe-life-conformance.yml) — the historical PCI DSS / SOC 2 Type II / SOC 3 attestations from the archived Security page, plus API-standard conformance (all false by absence).
+- [`lifecycle/breathe-life-lifecycle.yml`](lifecycle/breathe-life-lifecycle.yml) — terminal lifecycle record: acquisition, decommissioning, the deleted Atlassian status page, and the company timeline.
+- [`security/breathe-life-domain-security.yml`](security/breathe-life-domain-security.yml) — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe. No DNSSEC, CAA limited to Let's Encrypt, SPF and DMARC present with `p=none`, and the presented certificate does not match the hostname.
+- [`llms/breathe-life-llms.txt`](llms/breathe-life-llms.txt) — generated llms.txt (`/llms.txt` on the live host returns 404).
+
+Deliberately absent, because the underlying thing does not exist: `openapi/`, `asyncapi/`, `graphql/`, `mcp/`, `skills/`, `scopes/`, `authentication/`, `conventions/`, `errors/`, `sandbox/`, `cli/`, `components/`, `data-model/`, `changelog/`, `overlays/`, `grpc/`. No `StatusPage`, `Compliance`, `PrivacyPolicy`, `WellKnown` or `Security` pointer is wired either — each of those checks asserts a live public surface, and Breathe Life has none.
+
 ## Links
 
 - [Website (decommissioned)](https://www.breathelife.com/)

@@ -1,0 +1,148 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://registry.npmjs.org/-/v1/search?text=breathelife (HTTP 200, 6 results),
+  https://registry.terraform.io/v1/providers/getbreathelife/onespansign (HTTP 200),
+  https://api.github.com/orgs/getbreathelife/repos (HTTP 200, 18 repos)
+summary: >-
+  Breathe Life published no client SDK for its own platform, because it never
+  exposed a public API. Every first-party package found in a public registry is
+  internal engineering tooling (ESLint/Prettier configs, a cls-hooked fork) or a
+  client for somebody ELSE'S API (the OneSpan Sign e-signature service). All npm
+  packages are published by the npm user `breathelife` and point back at the
+  getbreathelife GitHub organization, so first-party authorship is confirmed —
+  but none of them is a Breathe Life API SDK, so no `SDKs` pointer is emitted in
+  apis.yml. The npm packages have not been republished since 2022-08-16; the
+  Terraform provider's last release was 2022-10-28, seven months after the SE2
+  acquisition.
+registries_probed:
+- registry: npm
+  status: 200
+  result: 6 first-party packages
+- registry: terraform-registry
+  status: 200
+  result: 1 first-party community provider (getbreathelife/onespansign)
+- registry: pypi
+  status: 404
+  result: none
+- registry: rubygems
+  status: 404
+  result: none
+- registry: crates.io
+  status: 403
+  result: search blocked; no Breathe Life crate referenced anywhere in the org or docs
+- registry: maven-central
+  status: null
+  result: no Java artifact referenced in the org or in any archived page
+- registry: nuget
+  status: null
+  result: no .NET artifact referenced in the org or in any archived page
+- registry: packagist
+  status: null
+  result: no PHP artifact referenced in the org or in any archived page
+packages:
+- language: javascript
+  registry: npm
+  name: '@breathelife/prettier-plugin-sort-imports'
+  version: 3.0.5
+  published: '2021-11-10'
+  url: https://www.npmjs.com/package/@breathelife/prettier-plugin-sort-imports
+  install: npm install @breathelife/prettier-plugin-sort-imports
+  license: Apache-2.0
+  repository: https://github.com/getbreathelife/prettier-plugin-sort-imports
+  official: true
+  kind: internal-tooling
+  description: Prettier plugin to sort imports in a provided RegEx order.
+- language: javascript
+  registry: npm
+  name: eslint-config-breathelife-base
+  version: 2.1.0
+  published: '2018-12-05'
+  url: https://www.npmjs.com/package/eslint-config-breathelife-base
+  install: npm install eslint-config-breathelife-base
+  license: MIT
+  repository: https://github.com/getbreathelife/eslint-config-breathelife
+  official: true
+  kind: internal-tooling
+  description: Breathe Life's base JavaScript ESLint config.
+- language: javascript
+  registry: npm
+  name: eslint-config-breathelife-web
+  version: 2.1.0
+  published: '2018-12-05'
+  url: https://www.npmjs.com/package/eslint-config-breathelife-web
+  install: npm install eslint-config-breathelife-web
+  license: MIT
+  repository: https://github.com/getbreathelife/eslint-config-breathelife
+  official: true
+  kind: internal-tooling
+  description: Breathe Life's web ESLint config.
+- language: javascript
+  registry: npm
+  name: eslint-config-breathelife-node
+  version: 2.1.0
+  published: '2018-12-05'
+  url: https://www.npmjs.com/package/eslint-config-breathelife-node
+  install: npm install eslint-config-breathelife-node
+  license: MIT
+  repository: https://github.com/getbreathelife/eslint-config-breathelife
+  official: true
+  kind: internal-tooling
+  description: Breathe Life's Node.js ESLint config.
+- language: javascript
+  registry: npm
+  name: '@breathelife/cls-hooked'
+  version: 4.3.0
+  published: '2022-08-16'
+  url: https://www.npmjs.com/package/@breathelife/cls-hooked
+  install: npm install @breathelife/cls-hooked
+  license: BSD-2-Clause
+  repository: https://github.com/getbreathelife/cls-hooked
+  official: true
+  kind: fork
+  description: >-
+    Fork of cls-hooked (continuation-local storage using async_hooks). Upstream
+    library, republished under the Breathe Life scope.
+- language: javascript
+  registry: npm
+  name: '@breathelife-oss/cls-hooked'
+  version: 4.3.0
+  published: '2022-08-16'
+  url: https://www.npmjs.com/package/@breathelife-oss/cls-hooked
+  install: npm install @breathelife-oss/cls-hooked
+  license: BSD-2-Clause
+  repository: https://github.com/getbreathelife/cls-hooked
+  official: true
+  kind: fork
+  description: Same cls-hooked fork published under a second (-oss) npm scope.
+- language: hcl
+  registry: terraform-registry
+  name: getbreathelife/onespansign
+  version: 0.1.1-beta
+  published: '2022-10-28'
+  url: https://registry.terraform.io/providers/getbreathelife/onespansign/latest
+  install: 'terraform { required_providers { onespansign = { source = "getbreathelife/onespansign" } } }'
+  repository: https://github.com/getbreathelife/terraform-provider-onespansign
+  downloads: 3863
+  tier: community
+  official: true
+  kind: third-party-api-client
+  description: >-
+    Terraform provider that configures OneSpan Sign accounts. Consumes the
+    third-party OneSpan Sign API; does not expose a Breathe Life API.
+- language: typescript
+  registry: none
+  name: onespan-sign-node
+  url: https://github.com/getbreathelife/onespan-sign-node
+  install: git clone https://github.com/getbreathelife/onespan-sign-node
+  official: true
+  kind: third-party-api-client
+  description: >-
+    Node.js client library for the third-party OneSpan Sign e-signature API
+    (v11.46). Source-only — probed https://registry.npmjs.org/onespan-sign-node
+    (HTTP 404); it was never published to npm.
+notes:
+- >-
+  No `SDKs` pointer is wired in apis.yml. The sdk_count check is about client
+  libraries for the provider's OWN API; Breathe Life shipped none, and claiming
+  otherwise from ESLint configs would be false.

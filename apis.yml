@@ -47,6 +47,44 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/breathe-life-domain-security.yml
+  name: Domain security probe
+  description: >-
+    Live TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe of the surviving breathelife.com DNS
+    records (2026-07-25). Both reachable hosts present a certificate that does not
+    match the hostname.
+- type: Packages
+  url: packages/breathe-life-packages.yml
+  name: Published packages
+  description: >-
+    Six first-party npm packages and one Terraform Registry provider, all
+    published by the breathelife npm account / getbreathelife GitHub org. Every
+    one is internal engineering tooling (ESLint/Prettier configs, a cls-hooked
+    fork) or a client for a third-party API (OneSpan Sign). No SDK for a Breathe
+    Life API exists, so no SDKs pointer is emitted.
+- type: Conformance
+  url: conformance/breathe-life-conformance.yml
+  name: Standards conformance
+  description: >-
+    Historical PCI DSS service-provider, SOC 2 Type II and SOC 3 attestations
+    (archived Security page, request-gated by email) plus API-standard
+    conformance — OpenAPI, AsyncAPI, OAuth2, OIDC, RFC 9457, RFC 9116 and ACORD
+    all false by absence.
+- type: Lifecycle
+  url: lifecycle/breathe-life-lifecycle.yml
+  name: Lifecycle record
+  description: >-
+    Terminal lifecycle record: no API versioning or deprecation policy ever
+    existed; the SE2 acquisition (2022-03-28), the decommissioning of
+    breathelife.com, the deleted Atlassian status page, and the full company
+    timeline.
+- type: LLMsTxt
+  url: llms/breathe-life-llms.txt
+  name: llms.txt
+  description: >-
+    Generated llms.txt for this record — http://breathelife.com/llms.txt returns
+    HTTP 404.
 - type: Website
   url: https://www.breathelife.com/
   name: Breathe Life Website
@@ -79,6 +117,21 @@ common:
   description: >-
     Last substantive capture of the live site, carrying the "We are now part of
     Zinnia!" banner and the Hybrid Origination Platform product pages.
+- type: Archive
+  url: https://web.archive.org/web/20221004232457/https://www.breathelife.com/life-insurance-security/
+  name: Security & Privacy page (archived 2022-10-04)
+  description: >-
+    The only surviving evidence of Breathe Life's compliance posture — PCI DSS
+    compliant service provider, SOC 2 Type II and SOC 3 — with the AoC and SOC 2
+    report gated behind email requests to pci@breathelife.com and
+    soc2@breathelife.com. Historical only; the live page no longer exists, so no
+    Compliance or TrustCenter pointer is emitted.
+- type: Archive
+  url: https://web.archive.org/web/20220809144206/https://www.breathelife.com/privacy-policy/
+  name: Privacy Policy (archived 2022-08-09)
+  description: >-
+    Archived privacy policy. The live URL now 404s with the rest of the site, so
+    this is recorded as an archive rather than a live PrivacyPolicy pointer.
 - type: ParentCompany
   url: https://zinnia.com/
   name: Zinnia (formerly SE2)
