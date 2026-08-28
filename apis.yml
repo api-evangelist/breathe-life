@@ -29,6 +29,17 @@ description: >-
   www.breathelife.com returns a WP Engine "Site is not available" 404. Quote,
   bind, issue and FNOL existed only as capabilities inside a carrier-licensed,
   login-gated SaaS product, never as an addressable public API.
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
